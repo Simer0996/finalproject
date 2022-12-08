@@ -1,10 +1,8 @@
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
 const typeDefs = require('./Graphql/typeDefs');
 const resolvers = require('./Graphql/resolvers/index');
-
 
 dotenv.config();
 
@@ -21,7 +19,7 @@ mongoose.connect(`${process.env.MONGODB}`, { useNewUrlParser: true })
         console.log('MongoDB Connected')
 
         server.listen({ port: 5000 }).then(res => {
-            console.log(`Server running at ${res.url}`)
+            console.log(`Server running at ${res.url}graphql`)
         })
     })
 
