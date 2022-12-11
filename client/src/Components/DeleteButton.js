@@ -1,21 +1,29 @@
 import React from 'react'
-import { gql, useMutation } from '@apollo/react-hooks'
+import { gql, useMutation } from '@apollo/client'
 import { Button, Icon, Confirm } from 'semantic-ui-react'
 import { GET_BLOG_POSTS } from '../utils/graphql'
+import { filter } from 'lodash'
 
 
 const DeleteButton = ({ blogId }) => {
     console.log(blogId)
     const [confirmOpen, setConfirmOpen] = React.useState(false)
 
+    // const [deleteBlog] = useMutation(DELETE_BLOG_POST, {
+    //     update(proxy) {
+    //         setConfirmOpen(false)
+    //         const data = proxy.readQuery({
+    //             query: GET_BLOG_POSTS
+    //         })
+    //         data.getBlogs = data.getBlogs.filter((o) => o.id !== blogId)
+    //         proxy.writeQuery({ query: GET_BLOG_POSTS, data })
+    //     },
+    //     variables: { blogId }
+    // })
+
     const [deleteBlog] = useMutation(DELETE_BLOG_POST, {
-        update(proxy) {
+        update() {
             setConfirmOpen(false)
-            const data = proxy.readQuery({
-                query: GET_BLOG_POSTS
-            })
-            data.getBlogs = data.getBlogs.filter((o) => o.id !== blogId)
-            proxy.writeQuery({ query: GET_BLOG_POSTS, data })
         },
         variables: { blogId }
     })
