@@ -25,7 +25,7 @@ const BlogCard = ({ id, createdAt, title, username, body }) => {
                     <div className="right floated author">
                         {username}
                     </div>
-                    {user && user.username === username && <DeleteButton blogID={id} />}<div></div>
+                    {user && user.username === username && <DeleteButton blogId={id} />}<div></div>
                 </div>
             </div>
         </>

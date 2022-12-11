@@ -4,22 +4,23 @@ import { Button, Icon, Confirm } from 'semantic-ui-react'
 import { GET_BLOG_POSTS } from '../utils/graphql'
 
 
-const DeleteButton = ({ blogID }) => {
-    console.log(blogID)
+const DeleteButton = ({ blogId }) => {
+    console.log(blogId)
     const [confirmOpen, setConfirmOpen] = React.useState(false)
 
     const [deleteBlog] = useMutation(DELETE_BLOG_POST, {
-
         update(proxy) {
             setConfirmOpen(false)
             const data = proxy.readQuery({
                 query: GET_BLOG_POSTS
             })
-            data.getBlogs = data.getBlogs.filter((b) => b.id !== blogID)
+            data.getBlogs = data.getBlogs.filter((o) => o.id !== blogId)
             proxy.writeQuery({ query: GET_BLOG_POSTS, data })
         },
-        variables: { blogID },
+        variables: { blogId }
     })
+
+
 
 
     return (
