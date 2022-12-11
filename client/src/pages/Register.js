@@ -24,12 +24,7 @@ const Register = (props) => {
             context.login(result.data.register)
             navigate('/')
         },
-        // onError(err) {
-        //     if (err) {
-        //         alert("Input each and every fields")
-        //     }
 
-        // },
         variables: values
     })
 
