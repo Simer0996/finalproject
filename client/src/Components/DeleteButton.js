@@ -9,7 +9,7 @@ const DeleteButton = ({ blogID }) => {
     const [confirmOpen, setConfirmOpen] = React.useState(false)
 
     const [deleteBlog] = useMutation(DELETE_BLOG_POST, {
-        variables: { blogId: blogID },
+
         update(proxy) {
             setConfirmOpen(false)
             const data = proxy.readQuery({
@@ -17,7 +17,8 @@ const DeleteButton = ({ blogID }) => {
             })
             data.getBlogs = data.getBlogs.filter((b) => b.id !== blogID)
             proxy.writeQuery({ query: GET_BLOG_POSTS, data })
-        }
+        },
+        variables: { blogID },
     })
 
 

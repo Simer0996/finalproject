@@ -48,7 +48,7 @@ module.exports = {
             const user = checkAuth(context);
 
             try {
-                const blog = await Post.findById(blogId);
+                const blog = await Blog.findById(blogId);
                 if (user.username === blog.username) {
                     await blog.delete();
                     return 'Blog deleted successfully';

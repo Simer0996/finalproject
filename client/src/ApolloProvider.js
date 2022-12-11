@@ -6,7 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 
 
 const httpLink = createHttpLink({
-    uri: 'https://simer.wmdd4950.com/project'
+    uri: 'http://localhost:5000/graphql'
 })
 
 const authLink = setContext(() => {
